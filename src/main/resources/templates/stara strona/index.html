@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Strona do zamawiania Jedzenia</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{~/fonts/icomoon/style.css}">
+
+    <link rel="stylesheet" th:href="@{~/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{~/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{~/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" th:href="@{~/css/owl.theme.default.min.css}">
+
+    <link rel="stylesheet" th:href="@{~/css/jquery.fancybox.min.css}">
+
+    <link rel="stylesheet" th:href="@{~/css/bootstrap-datepicker.css}">
+
+    <link rel="stylesheet" th:href="@{~/fonts/flaticon/font/flaticon.css}">
+
+    <link rel="stylesheet" th:href="@{~/css/aos.css}">
+
+    <link rel="stylesheet" th:href="@{~/css/style.css}">
+
+
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<div class="site-wrap">
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container-fluid">
+            <div class="d-flex align-items-center">
+                <div class="site-logo"><a href="/">Mokra Włoszka </a></div>
+                <div>
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                            <li><a href="#home-section" class="nav-link">Strona Główna</a></li>
+                            <li><a href="#process-section" class="nav-link">O Kuchni</a></li>
+                            <li>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary rounded border border-primary" type="button"
+                                            data-toggle="dropdown">
+                                        Menu
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu ">
+                                        <li><a class="nav-link" href="#sekcja-menu">Poniedziałek</a></li>
+                                        <li><a class="nav-link" href="#sekcja-menu-wotrek">Wtorek</a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li><a href="/cart/show" class="nav-link">Koszyk</a></li>
+                            <li sec:authorize="isAuthenticated()"><a href="/meals/show-all" class="nav-link">Posiłki</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="ml-auto">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+                        <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block">
+                            <li class="cta"><a href="/users/login" class="nav-link"><span
+                                    class="rounded border border-primary">Manager</span></a></li>
+                            <li sec:authorize="isAuthenticated()" class="cta"><a href="/order-list/show"
+                                                                                 class="nav-link"><span
+                                    class="rounded border border-primary">Zamowienia</span></a></li>
+
+                        </ul>
+                    </nav>
+                    <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span
+                            class="icon-menu h3"></span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="intro-section" id="home-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 mr-auto" data-aos="fade-up">
+                    <h1>Magiczne włoskie jedzenie.</h1>
+                    <p class="mb-5">Restauracja Mokra Włoszka to jedno z nielicznych miejsc na mapie Wrocławia gdzie
+                        mogą Państwo zasmakować prawdziwej włoskiej kuchni.
+                        Oferujemy pizze z pieca kamiennego, przygotowaną z oryginalnych włoskich składników. </p>
+                    <p><a href="#sekcja-menu" class="btn btn-outline-light py-3 px-5">MENU</a></p>
+
+                </div>
+                <div class="col-lg-2 ml-auto" data-aos="fade-up" data-aos-delay="100">
+                    <figure class="img-absolute">
+                        <img src="images/podstowe.jpg" alt="Image" class="img-fluid">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="site-section section-1">
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mr-auto mb-5">
+
+                    <div class="mb-5">
+                        <span class="section-sub-title d-block">Mokra Włoszka</span>
+                        <h2 class="section-title">Nasza historia</h2>
+                        <p> Restauracja Mokra Włoszka powstała w 2010 roku. Miejsce to jest efektem zamiłowania do
+                            kuchni włoskiej i potrzeby połączenia jej z tradycyjną polską gościnnością,
+                            tak aby stworzyć całkowicie wyjątkowe miejsce spotkań w sercu Wrocławia. </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                            <div class="counter d-flex align-items-start mb-5" data-aos="fade-up" data-aos-delay="">
+                                <div class="icon-wrap"><span class="flaticon-reload text-primary"></span></div>
+                                <div class="counter-text">
+                                    <strong>260</strong>
+                                    <span>Liczba zadowolonych klientów</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="image-absolute-box">
+
+                        <img src="images/historia_3.jpg" alt="Image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="site-section section-2" id="process-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <span class="section-sub-title d-block">O kuchni</span>
+                    <h2 class="section-title">Tradycyjna receptura</h2>
+                    <p> Wszystkie nasze dania zostały stworzone według prawdziwie włoskiej receptury i przy użyciu
+                        oryginalnych, regionalnych składników.
+                        Wierzymy, że potrawy przygotowane przez naszych wybitnych kucharzy przypadną Państwu do gustu i
+                        zachęcą do kolejnej wizyty w Mokrej Włoszce. </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="">
+                    <div class="process p-3">
+                        <span class="number">Ciasto</span>
+                        <div>
+                            <span class=" display-4 text-primary mb-4 d-inline-block"></span>
+                            <h3>Ciasto</h3>
+                            <p> Do ciasta używamy tylko najwyższej jakości włoskiej mąki „5 Stagioni”. Tworzy się ją ze
+                                specjalnie wyselekcjonowanej pszenicy we włoskich młynach, prowadzonych od 200 lat przez
+                                jedną rodzinę.
+                                Odpowiedni proces dojrzewania ciasta sprawia, że pizza jest nie tylko pyszna, ale
+                                również lekkostrawna.</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process p-3">
+                        <span class="number">Sos</span>
+                        <div>
+                            <span class=" display-4 text-primary mb-4 d-inline-block"></span>
+                            <h3>Sos</h3>
+                            <p> Tworzony tylko ze słodkich, włoskich pomidorów Pelati, które dojrzewają w gorącym słońcu
+                                południa.
+                                Jego wyjątkowy smak to również zasługa doskonałych dodatków i receptury naszego szefa
+                                kuchni</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process p-3">
+                        <span class="number">Ser</span>
+                        <div>
+                            <span class="display-4 text-primary mb-4 d-inline-block"></span>
+                            <h3>Ser</h3>
+                            <p>Jedynie mozzarella. Prawdziwa, najlepiej „Di Bufala”, tworzona tylko w regionie Kampanii
+                                z mleka bawolic. Ciągnąca się w nieskończoność, łagodna, nienarzucająca się, doskonale
+                                wydobywa smak dodatków.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section bg-light" id="sekcja-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <span class="section-sub-title d-block">Menu</span>
+                    <h2 class="section-title">Menu</h2>
+                    <p>
+                        Szef kuchni dokłada wszelkich starań, by szeroki wybór dań zadowolił nawet najbardziej
+                        wyrafinowane podniebienia. To u Nas odnajdziecie Państwo posmak szaleństwa kulinarnej
+                        ekstrawagancji na dużej palecie wykwintnych dań. Posiadamy najwyższej klasy zaplecze
+                        gastronomiczne, które w połączeniu z doświadczeniem gwarantuje najwyższą jakość usług, a co za
+                        tym idzie zadowolenie Naszych Klientów.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="owl-carousel nonloop-block-14">
+
+
+            <div class="service" th:each="meal: ${mealDTO}"
+                 th:if="${meal.active and meal.days.getDayOfTheWeek() == 'Monday'}">
+                <div>
+
+                    <h3 th:text="${meal.mealName}"></h3>
+                    <h4 th:text="${meal.price}"> zł</h4>
+                    <p th:text="${meal.description}">
+
+                    </p>
+                    <form action="#" th:action="@{'/cart/' + ${meal.id}}" method="post">
+                        <input class="btn btn-outline-primary" type="submit" name="Dodaj do koszyka"
+                               value="Dodaj do koszyka"/>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="site-section bg-light" id="sekcja-menu-wotrek">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-5">
+                        <span class="section-sub-title d-block">Menu</span>
+                        <h2 class="section-title">Menu na Wtorek</h2>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="owl-carousel nonloop-block-14">
+
+
+                <div class="service" th:each="meal: ${mealDTO}"
+                     th:if="${meal.active and meal.days.getDayOfTheWeek() == 'Tuesday'}">
+                    <div>
+
+                        <h3 th:text="${meal.mealName}"></h3>
+                        <h4 th:text="${meal.price}"> zł</h4>
+                        <p th:text="${meal.description}">
+
+                        </p>
+                        <form action="#" th:action="@{'/cart/' + ${meal.id}}" method="post">
+                            <input class="btn btn-outline-primary" type="submit" name="Dodaj do koszyka"
+                                   value="Dodaj do koszyka"/>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <footer class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>About Amplify</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro consectetur ut hic ipsum et
+                            veritatis corrupti. Itaque eius soluta optio dolorum temporibus in, atque, quos fugit sunt
+                            sit
+                            quaerat dicta.</p>
+                    </div>
+
+                    <div class="col-md-3 ml-auto">
+                        <h3>Links</h3>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Work</a></li>
+                            <li><a href="#">Process</a></li>
+                            <li><a href="#">Services</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h3>Subscribe</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt iure iusto
+                            architecto? Numquam, natus?</p>
+                        <form action="#">
+                            <div class="d-flex mb-5">
+                                <input type="text" class="form-control rounded-0" placeholder="Email">
+                                <input type="submit" class="btn btn-primary rounded-0" value="Subscribe">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row pt-5 mt-5 text-center">
+                    <div class="col-md-12">
+                        <div class="border-top pt-5">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                                All rights reserved | This template is made with <i class="icon-heart"
+                                                                                    aria-hidden="true"></i> by <a
+                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+
+    </div> <!-- .site-wrap -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.countdown.min.js"></script>
+    <script src="/js/bootstrap-datepicker.min.js"></script>
+    <script src="/js/jquery.easing.1.3.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/jquery.fancybox.min.js"></script>
+    <script src="/js/jquery.sticky.js"></script>
+
+
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

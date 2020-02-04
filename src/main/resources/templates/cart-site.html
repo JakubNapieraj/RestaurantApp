@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{~/user-web/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link th:href="@{~/user-web/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+          rel="stylesheet" type="text/css">
+    <link th:href="@{~/user-web/vendor/simple-line-icons/css/simple-line-icons.css}" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link th:href="@{~/user-web/css/stylish-portfolio.min.css}" rel="stylesheet">
+    <style>
+        .pausen {
+            margin-top: 10%;
+        }
+
+    </style>
+
+</head>
+
+
+<body id="page-top">
+
+
+<!-- Navigation -->
+<a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+</a>
+<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a class="js-scroll-trigger" href="#page-top">PausenBrot</a>
+        </li>
+        <li class="sidebar-nav-item">
+            <a class="js-scroll-trigger" href="/">Strona Główna</a>
+        </li>
+
+    </ul>
+</nav>
+
+<!-- Header -->
+<div class="container">
+    <div class="site-section" id="registration">
+        <div class="container">
+
+            <div class="row justify-content-center ">
+                <div class="col-md-7">
+
+
+
+                    <h2 class="section-title mb-3 pausen">Zamówienie</h2>
+
+                    <table class="table table-striped">
+
+                        <tr>
+                            <th>Nazwa Zamówienia</th>
+                            <th>Cena</th>
+                            <th>Ilość</th>
+                            <th>Suma</th>
+                            <th>Dodaj</th>
+                            <th>Usuń</th>
+                        </tr>
+                        <tr th:each="mqdto: ${mealQuantityDTO}">
+
+                            <td th:text="${mqdto.mealName}"></td>
+                            <td th:text="${mqdto.price}"></td>
+                            <td th:text="${mqdto.quantity}"></td>
+                            <td th:text="${mqdto.price * mqdto.quantity}"></td>
+
+                            <td>
+                                <form action="#" th:action="@{'/cart/add/{id}'(id=${mqdto.getMealId()})}"
+                                      th:object="${mqdto}" th:method="post">
+                                    <input type="hidden" name="_method" value="add"/>
+                                    <button type="submit" class="btn btn-success" id="submit"> +</button>
+
+                                </form>
+                            </td>
+                            <td>
+                                <form action="#" th:action="@{'/cart/delete/{id}'(id=${mqdto.getMealId()})}"
+                                      th:object="${mqdto}" th:method="delete">
+                                    <input type="hidden" name="_method" value="delete"/>
+                                    <button type="submit" class="btn btn-danger" id="submitButton"> -</button>
+
+                                </form>
+                            </td>
+                        </tr>
+
+
+                    </table>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+
+                            <form  method="get" action="/cart/finalize">
+                                <button class="btn btn-primary py-3 px-5 btn-block" type="submit">Przejdź dalej</button>
+                            </form>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Footer -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/../user-web/vendor/jquery/jquery.min.js"></script>
+    <script src="/../user-web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/../user-web/vendor/jquery/tabs.js"></script>
+
+
+    <script src="/../user-web/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/../user-web/js/stylish-portfolio.min.js"></script>
+
+</body>
+
+</html>

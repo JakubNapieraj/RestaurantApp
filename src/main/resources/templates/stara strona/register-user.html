@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+        <title>Amplify &mdash; Website by Colorlib</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+        <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+        <link rel="stylesheet"  th:href="@{~/fonts/icomoon/style.css}">
+
+        <link rel="stylesheet" th:href="@{~/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{~/css/owl.carousel.min.css}">
+        <link rel="stylesheet" th:href="@{~/css/owl.theme.default.min.css}">
+        <link rel="stylesheet" th:href="@{~/css/owl.theme.default.min.css}">
+
+        <link rel="stylesheet" th:href="@{~/css/jquery.fancybox.min.css}">
+
+        <link rel="stylesheet" th:href="@{~/css/bootstrap-datepicker.css}">
+
+        <link rel="stylesheet" th:href="@{~/fonts/flaticon/font/flaticon.css}">
+
+        <link rel="stylesheet" th:href="@{~/css/aos.css}">
+
+        <link rel="stylesheet" th:href="@{~/css/style.css}">
+
+
+    <title>Rejestracja</title>
+</head>
+<body>
+
+    <div class="site-wrap">
+
+
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+            <div class="container-fluid">
+                <div class="d-flex align-items-center">
+                    <div class="site-logo"><a href="/">Amplify</a></div>
+                    <div>
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                <li><a href="/" class="nav-link">Strona Główna</a></li>
+                            </ul>
+                        </nav>
+                        <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </header>
+
+    <div class="container">
+        <div class="site-section" id="registration">
+            <div class="container">
+
+                <div class="row justify-content-center">
+                    <div class="col-md-7">
+
+
+
+                        <h2 class="section-title mb-3">Rejestracja</h2>
+                        <p class="mb-5">Zarejestruj się w naszym systemie, by móc zamawiać nasze dania.</p>
+
+                        <form th:action="@{~/api/users}" th:object="${dto}" method="post" data-aos="fade">
+                            <div class="form-group row">
+                                <div class="col-md-6 mb-3 mb-lg-0"
+                                     th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+                                    <input id="firstName" type="text" class="form-control" placeholder="Imię"  th:field="*{firstName}">
+                                </div>
+                                <div class="col-md-6"
+                                     th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+                                    <input id="lastName" type="text" class="form-control" placeholder="Nazwisko" th:field="*{lastName}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-12"   th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                                    <input id="email" type="text" class="form-control" placeholder="E-mail" th:field="*{email}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-12" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+                                    <input id="password" type="password" class="form-control" placeholder="Hasło" th:field="*{password}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 mb-3 mb-lg-0"
+                                     th:classappend="${#fields.hasErrors('postCode')}? 'has-error':''">
+                                    <input id="postCode" type="text" class="form-control" placeholder="Kod pocztowy"  th:field="*{postCode}"/>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <input id="streetNumber" type="text" class="form-control" placeholder="Numer ulicy" th:field="*{steetNumber}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-12" th:classappend="${#fields.hasErrors('city')}? 'has-error':''">
+                                    <input id="city" type="text" class="form-control" placeholder="Miasto"  th:field="*{city}"/>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+
+                                    <input type="submit" class="btn btn-primary py-3 px-5 btn-block" value="Zarejestruj">
+                                    <span>Already registered? <a href="/" th:href="@{/users/login}">Login here</a></span>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div> <!-- .site-wrap -->
+
+        <script src="/js/jquery-3.3.1.min.js"></script>
+        <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="/js/jquery-ui.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/owl.carousel.min.js"></script>
+        <script src="/js/jquery.stellar.min.js"></script>
+        <script src="/js/jquery.countdown.min.js"></script>
+        <script src="/js/bootstrap-datepicker.min.js"></script>
+        <script src="/js/jquery.easing.1.3.js"></script>
+        <script src="/js/aos.js"></script>
+        <script src="/js/jquery.fancybox.min.js"></script>
+        <script src="/js/jquery.sticky.js"></script>
+
+
+        <script src="/js/main.js"></script>
+    </div>
+</body>
+
+</html>

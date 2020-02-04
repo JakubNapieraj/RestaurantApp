@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{~/user-web/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link th:href="@{~/user-web/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+          rel="stylesheet" type="text/css">
+    <link th:href="@{~/user-web/vendor/simple-line-icons/css/simple-line-icons.css}" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link th:href="@{~/user-web/css/stylish-portfolio.min.css}" rel="stylesheet">
+    <style>
+        .pausen {
+            margin-top: 10%;
+        }
+
+    </style>
+
+</head>
+
+
+<body id="page-top">
+
+
+<!-- Navigation -->
+<a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+</a>
+<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a class="js-scroll-trigger" href="#page-top">PausenBrot</a>
+        </li>
+        <li class="sidebar-nav-item">
+            <a class="js-scroll-trigger" href="/">Strona Główna</a>
+        </li>
+
+    </ul>
+</nav>
+
+<!-- Header -->
+<div class="container">
+    <div class="site-section" id="registration">
+        <div class="container">
+            <div class="row"></div>
+
+            <div class="row justify-content-center ">
+                <div class="col-md-7">
+
+
+
+                    <h2 class="section-title mb-3 pausen">Zamówienie</h2>
+
+                    <table class="table table-striped">
+
+                        <tr>
+                            <th>Nazwa Zamówienia</th>
+                            <th>Cena</th>
+                            <th>ilość</th>
+                            <th>Suma</th>
+                        </tr>
+                        <tr th:each="mqdto: ${mealQuantityDTO}">
+
+                            <td th:text="${mqdto.mealName}"></td>
+                            <td th:text="${mqdto.price}"></td>
+                            <td th:text="${mqdto.quantity}"></td>
+                            <td th:text="${mqdto.price * mqdto.quantity}"></td>
+                        </tr>
+
+
+                    </table>
+
+                    <h3 class="mb-5">Podaj Dane adresowe</h3>
+
+                    <form th:object="${orderDTO}" method="post" data-aos="fade">
+                        <div class="form-group row">
+                            <div class="col-md-6 mb-3 mb-lg-0"
+                                 th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+                                <input id="firstName" type="text" class="form-control" placeholder="Imię"  th:field="*{firstName}">
+                            </div>
+                            <div class="col-md-6"
+                                 th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+                                <input id="lastName" type="text" class="form-control" placeholder="Nazwisko" th:field="*{lastName}">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12"   th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                                <input id="email" type="text" class="form-control" placeholder="E-mail" th:field="*{email}"/>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-6 mb-3 mb-lg-0"
+                                 th:classappend="${#fields.hasErrors('postCode')}? 'has-error':''">
+                                <input id="postCode" type="text" class="form-control" placeholder="Kod pocztowy"  th:field="*{postCode}"/>
+                            </div>
+                            <div class="col-md-6">
+
+                                <input id="streetNumber" type="text" class="form-control" placeholder="Numer ulicy" th:field="*{streetNumber}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12" th:classappend="${#fields.hasErrors('city')}? 'has-error':''">
+                                <input id="city" type="text" class="form-control" placeholder="Miasto"  th:field="*{city}"/>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+
+                                <input type="submit" class="btn btn-primary py-3 px-5 btn-block" value="Złóż zamówienie">
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Footer -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/../user-web/vendor/jquery/jquery.min.js"></script>
+    <script src="/../user-web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/../user-web/vendor/jquery/tabs.js"></script>
+
+
+    <script src="/../user-web/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/../user-web/js/stylish-portfolio.min.js"></script>
+
+</body>
+
+</html>
